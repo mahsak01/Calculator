@@ -1,4 +1,5 @@
 import 'package:calculator/models/calculation.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:calculator/constant.dart';
@@ -27,9 +28,22 @@ class Controller extends GetxController  with SingleGetTickerProviderMixin{
     update();
   }
   void calculationInput(){
-    calculation.setInput(_input);
-    print(calculation.result);
-    _input=calculation.result.toString();
+    if(!_input.isEmpty&&calculation.checkSign(_input[_input.length-1]))
+      Fluttertoast.showToast(
+          msg: "Invalid format use",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    else{
+      calculation.setInput(_input);
+      _input=calculation.result.toString();
+    }
+
+
     update();
 
   }

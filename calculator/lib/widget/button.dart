@@ -23,8 +23,10 @@ class Button extends StatelessWidget {
         else if(text!.isEmpty){
           _controller.cleanLastInput();
         }
-        else if(text!.compareTo("=")==0)
+        else if(text!.compareTo("=")==0){
           _controller.calculationInput();
+        }
+
         else{
           _controller.setInput(text!);
         }

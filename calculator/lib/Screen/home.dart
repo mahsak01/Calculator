@@ -76,7 +76,7 @@ class Home extends StatelessWidget {
 
                 ),
                 Spacer(
-                  flex: 2,
+                  flex: 4,
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
