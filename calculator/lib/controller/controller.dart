@@ -7,7 +7,18 @@ class Controller extends GetxController  with SingleGetTickerProviderMixin{
   int _mode=0.obs();
   String _input="".obs();
   String get input => _input;
+
+  void cleanLastInput(){
+    String temp=_input;
+    _input="";
+    for(int i=0 ; i<temp.length-1; i++){
+      _input+=temp[i];
+    }
+    update();
+  }
   void setInput(String input){
+    if(!_input.isEmpty&&calculation.checkSign(_input[_input.length-1]) && calculation.checkSign(input))
+      cleanLastInput();
     this._input+=input;
     update();
   }

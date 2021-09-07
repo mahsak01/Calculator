@@ -1,6 +1,9 @@
+import 'package:calculator/constant.dart';
 import 'package:calculator/controller/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'dart:math' as math;
+
 class Button extends StatelessWidget {
   String? text;
   var color;
@@ -14,12 +17,18 @@ class Button extends StatelessWidget {
 
     return GestureDetector(
       onTap: (){
+        scrollController.jumpTo(scrollController.position.maxScrollExtent);
         if(text!.compareTo("AC")==0)
           _controller.restartInput();
+        else if(text!.isEmpty){
+          _controller.cleanLastInput();
+        }
         else if(text!.compareTo("=")==0)
           _controller.calculationInput();
-        else
+        else{
           _controller.setInput(text!);
+        }
+
 
       },
       child: Container(
@@ -36,12 +45,14 @@ class Button extends StatelessWidget {
           ]
         ),
         child: Center(
-          child: Text(
+          child:(!text!.isEmpty)? Text(
             text!,
             style: TextStyle(
-              color: colorOfText,fontSize: 50
+              color: colorOfText,fontSize: 45
             ),
-          ),
+          ):Transform.rotate(
+              angle: 180 * math.pi / 180,
+              child: Icon(Icons.backspace_outlined,size: 45,color: colorOfText)),
         ),
       ),
     );

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 List<ThemeData> themes=[darkTheme,lightTheme];
 
+ScrollController scrollController = new ScrollController();
+
 ThemeData darkTheme = ThemeData(
     backgroundColor: Color(0xff222F3D),
     splashColor: Colors.transparent,

@@ -27,7 +27,7 @@ class _ChangeModeState extends State<ChangeMode> {
               gradient: _controller.mode == 0 ? darkGradient : lightGradient,
               borderRadius: BorderRadius.all(Radius.circular(20))),
           child: RollingSwitch.icon(
-
+            
             onChanged: (bool state) {
               (state) ? _controller.setMode(1) : _controller.setMode(0);
             },
