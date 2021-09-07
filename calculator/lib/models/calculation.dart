@@ -7,9 +7,12 @@ class Calculation{
   List<String> _list=[];
   List<Sign> sign=[Sign("-", 1),Sign("+", 1),Sign("%", 3),Sign("/", 3),Sign("x", 3)];
   void setInput(String s){
-    this._input=s;
-    splite();
-    setResult();
+    if (!s.isEmpty){
+      this._input=s;
+      splite();
+      setResult();
+    }
+
   }
 
   void splite(){
