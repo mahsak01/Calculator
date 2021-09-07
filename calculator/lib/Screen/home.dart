@@ -33,34 +33,37 @@ class Home extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Spacer(flex: 4,),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height/8,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      color: Theme.of(context).buttonColor,
-                    ),
-                    child: NotificationListener<OverscrollIndicatorNotification>(
-                      onNotification: (overscroll) {
-                        overscroll.disallowGlow();
-                        return true;
-                      },
-                      child: ListView(
-                        reverse: true,
-                        scrollDirection: Axis.vertical,
+                Stack(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height/8,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          color: Theme.of(context).buttonColor,
+                        ),
+                        // child: NotificationListener<OverscrollIndicatorNotification>(
+                        //   onNotification: (overscroll) {
+                        //     overscroll.disallowGlow();
+                        //     return true;
+                        //   },
+                        //   child: ListView(
+                        //     scrollDirection: Axis.vertical,
+                        //
+                        //     children: [
 
-                        children: [
-                          Padding(
-                            
-                            padding: const EdgeInsets.all(5),
-                            child: Text(_controller.input,style: TextStyle(color: Colors.black, fontSize: 40),textAlign: TextAlign.end,),
-                          ),
-                        ],
+                             child: Padding(
+                                padding: const EdgeInsets.all(5),
+                                child: Text(_controller.input,style: TextStyle(color: Colors.black, fontSize: 40),textAlign: TextAlign.end,),
+                              ),
+                        //     ],
+                        //   ),
+                        // ),
+
                       ),
                     ),
-
-                  ),
+                  ],
                 ),
                 Spacer(flex: 2,),
 
